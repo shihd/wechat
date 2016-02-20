@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<script src="../../webjars/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../../resources/js/web/wechat/controller/create_user.js"></script>
+<link rel="stylesheet"
+	href="../../webjars/bootstrap/3.3.5/css/bootstrap.css">
+<link rel="stylesheet" href="../../resources/css/wechat-style.css">
+</head>
+<body style="background-color: #FFFFFF;">
+	<div class="container">
+		<div class="row" style="padding-top: 20%">
+			<div style="text-align: center; font-size: 30px;">用户注册</div>
+		</div>
+		<div class="row" style="padding-top: 10%">
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-user"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					用户名</span> <input type="text" class="form-control" placeholder="请输入用户名"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-envelope"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					邮 箱</span> <input type="text" class="form-control" placeholder="请输入邮箱"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-lock"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					密 码</span> <input type="password" class="form-control" placeholder="请输入密码"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+		</div>
+		<div class="row" style="margin: 10px;text-align: center">
+			<div class="col-xs-6">
+				<button type="button" class="btn btn-primary"
+						style="font-size: 20px;width: 100%" onclick="signUp()" style="width: 40px">注 册</button>
+			</div>
+			<div class="col-xs-6">
+				<button type="button" class="btn btn-danger"
+						style="font-size: 20px;width: 100%" onclick="cancel()">返 回</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

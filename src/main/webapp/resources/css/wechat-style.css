@@ -1,0 +1,208 @@
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input,
+	legend, li, ol, p, select, table, td, textarea, th, ul {
+	margin: 0;
+	padding: 0
+}
+
+body {
+	min-width: 320px;
+	font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif;
+	color: #333;
+	-webkit-text-size-adjust: none
+}
+
+.container {
+	width: 100%;
+}
+
+.topbar {
+	background-color: #428bca;
+	color: #FFF;
+	height: 50px;
+	font-size: 15px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.title {
+	font-size: 20px;
+	float: left;
+}
+
+.subTitle {
+	float: right;
+}
+
+.main_visual {
+	border-top: 1px solid #d7d7d7;
+	overflow: hidden;
+	position: relative;
+}
+
+.main_image {
+	height: 422px;
+	overflow: hidden;
+	position: relative;
+}
+
+.main_image ul {
+	width: 9999px;
+	height: 422px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+
+.main_image li {
+	float: left;
+	width: 100%;
+	height: 422px;
+}
+
+.main_image li span {
+	display: block;
+	width: 100%;
+	height: 422px
+}
+
+.main_image li a {
+	display: block;
+	width: 100%;
+	height: 422px
+}
+
+.main_image li .img_1 {
+	background: url('../images/img_main_3.jpg') center top no-repeat;
+}
+
+.main_image li .img_2 {
+	background: url('../images/img_main_4.jpg') center top no-repeat
+}
+
+div.flicking_con {
+	position: absolute;
+	top: 360px;
+	left: 50%;
+	z-index: 999;
+	width: 300px;
+	height: 21px;
+	margin: 0 0 0 -50px;
+}
+
+div.flicking_con a {
+	float: left;
+	width: 21px;
+	height: 21px;
+	margin: 0;
+	padding: 0;
+	background: url('../images/btn_main_img.png') 0 0 no-repeat;
+	display: block;
+	text-indent: -1000px
+}
+
+div.flicking_con a.on {
+	background-position: 0 -21px
+}
+
+#btn_prev, #btn_next {
+	z-index: 11111;
+	position: absolute;
+	display: block;
+	width: 73px !important;
+	height: 74px !important;
+	top: 50%;
+	margin-top: -37px;
+	display: none;
+}
+
+#btn_prev {
+	background: url(../images/hover_left.png) no-repeat left top;
+	left: 100px;
+}
+
+#btn_next {
+	background: url(../images/hover_right.png) no-repeat right top;
+	right: 100px;
+}
+
+.modal-header {
+	background: url(../images/dialog_head_bg.jpg) repeat left top;
+}
+
+.modal-title-white {
+	color: #FFF;
+}
+
+.pageHeader {
+	background-color: #428bca;
+	color: #fff;
+	text-shadow: none;
+	text-align: center;
+	-moz-box-shadow: 2px 2px 10px #06C;
+	-webkit-box-shadow: 2px 2px 10px #06C;
+	box-shadow: 2px 2px 10px #06C;
+	-moz-box-shadow: 2px 2px 10px #06C;
+}
+
+.tool a:hover, .tool a:focus {
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+.province {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	font-size: 25px;
+	width: 100%;
+	background-color: #fcfcfc;
+}
+
+.province>li>p {
+	bold-bottom: 2px solid black;
+	background-color: #5490e1;
+	color: white;
+}
+
+.city {
+	list-style: none;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.court {
+	list-style: none;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	background-color: #24292c;
+	text-align: center;
+	height: 50px;
+	color: #ffffff;
+}
+
+.footer .active {
+	color: #fff;
+	background-color: #87b200;
+}
+
+.btn-custom:active, .btn-custom.active, .btn-custom:focus {
+	background-color: #ffffff;
+	border-color: none;
+	outline: none;
+}
+
+.inputSytle, .inputSytle:active, .inputSytle:focus {
+	margin-bottom: 5px;
+	border: 0px;
+	background: transparent;
+	outline: none;
+}

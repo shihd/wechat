@@ -1,0 +1,33 @@
+<html>
+<head>
+<script src="../resources/js/web/wechat/service/modify_user_info.js"></script>
+</head>
+<body style="height: 100%">
+	<div class="row"
+		style="margin-top: 10px; border-top: 2px solid #87b200; margin-left: 10px; margin-right: 10px; background-color: #fff; padding-left: 2em; padding-right: 2em">
+		<div
+			style="height: 30px; line-height: 30px; font-size: 15px; color: #5490e1">设置我的联系方式:</div>
+		<div
+			style="height: 1px; background-color: #dcdcdc; margin-left: -1em; margin-right: -1em"></div>
+		<div id="modifyUserInfo"></div>
+		<div style="width: 100%; margin-top: 10px">我的真实姓名：</div>
+		<div class="input-group" style="width: 100%; margin-top: 10px">
+			<span class="input-group-addon" id="basic-addon1"><i
+				class="fa fa-user"></i></span> <input id="userName" type="text"
+				class="form-control" placeholder="请输入您的真实姓名！">
+		</div>
+		<div style="width: 100%; margin-top: 10px">我的手机号码：</div>
+		<div class="input-group" style="margin-top: 10px; margin-bottom: 20px">
+			<span class="input-group-addon" id="basic-addon1"
+				style="font-size: 19px"><i class="fa fa-mobile-phone"></i></span> <input
+				id="mobile" type="text" class="form-control"
+				placeholder="请输入您的手机号码！">
+		</div>
+	</div>
+	<div class="row"
+		style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+		<input type="button" class="btn btn-block btn-default btn-custom" value="保存"
+			style="font-size: 20px" onclick="modifyUserInfo()">
+	</div>
+</body>
+</html>

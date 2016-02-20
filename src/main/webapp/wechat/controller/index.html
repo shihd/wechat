@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<script src="../../webjars/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../../resources/js/web/wechat/controller/index.js"></script>
+<link rel="stylesheet"
+	href="../../webjars/bootstrap/3.3.5/css/bootstrap.css">
+<link rel="stylesheet" href="../../resources/css/wechat-style.css">
+</head>
+<body style="background-color: #FFFFFF;">
+	<div class="container">
+		<div class="row" style="background-color: #428bca">
+			<div class="col-xs-8">
+				<div class="glyphicon glyphicon-cloud"
+					style="text-align: center; font-size: 15px; width: 100%; color: #FFF; height: 50px; line-height: 50px">今日多云
+					温度：19~25度</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="dropdown">
+					<div class="btn glyphicon glyphicon-list"
+						style="text-align: right; font-size: 15px; width: 100%; color: #FFF; height: 50px; line-height: 35px"
+						id="moreMenu" data-toggle="dropdown"></div>
+					<ul class="dropdown-menu pull-right" aria-labelledby="moreMenu">
+						<li><a href="#">设备管理</a></li>
+						<li><a href="#">情景管理</a></li>
+						<li><a href="#">房间管理</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">用户管理</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="javascript:changePwd()">密码修改</a></li>
+						<li><a href="#">个人资料</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">联系我们</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="javascript:signOut()">退出系统</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 glyphicon glyphicon-plus"
+				style="background-color: #EFEFEF; height: 100px; padding-top: 0px; line-height: 100px; text-align: center; color: #428bca">
+			</div>
+		</div>
+		<div class="row"
+			style="position: absolute; bottom: 0px; width: 100%; background-color: #428bca; height: 50px; color: #FFF">
+			<div class="col-xs-4" style="text-align: center;">
+				<div class="glyphicon glyphicon-th-large"
+					style="line-height: 40px; width: 100%; height: 30px"></div>
+				<div style="font-size: 10px">场景</div>
+			</div>
+			<div class="col-xs-4" style="text-align: center;">
+				<div class="glyphicon glyphicon-home"
+					style="line-height: 40px; width: 100%; height: 30px"></div>
+				<div style="font-size: 10px">主页</div>
+			</div>
+			<div class="col-xs-4" style="text-align: center;">
+				<div class="glyphicon glyphicon-glass"
+					style="line-height: 40px; width: 100%; height: 30px"></div>
+				<div style="font-size: 10px">房间</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
