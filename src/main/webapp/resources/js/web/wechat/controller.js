@@ -1,17 +1,7 @@
+//var path = "http://shengfuluo.com/wechat";
+//var path = "http://192.168.1.103:8080/wechat";
+var path = "http://localhost:8080/wechat";
+
 $(document).ready(function() {
 
 });
-
-var operator = null;
-
-function login() {
-	window.location = "controller/index.html";
-}
-
-function createUser() {
-	window.location = "controller/create_user.html";
-}
-
-function findPwd() {
-	window.location = "controller/find_pwd.html";
-}
