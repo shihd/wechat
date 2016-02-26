@@ -206,3 +206,22 @@ div.flicking_con a.on {
 	background: transparent;
 	outline: none;
 }
+
+.deviceList {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	font-size: 20px;
+	line-height: 50px; 
+	width : 100%;
+	background-color: #ececec;
+	width: 100%;
+}
+
+.deviceList li {
+	height: 50px;
+	border-bottom: 1px solid #cdcdcd;
+	padding-left: 1em;
+	padding-right: 1em;
+}
