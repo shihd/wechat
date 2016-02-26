@@ -7,17 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import cn.simon.wechat.model.Oauth;
 import cn.simon.wechat.model.UserInfo;
-import cn.simon.wechat.service.AccessTokenService;
 import cn.simon.wechat.service.UserInfoService;
-import cn.simon.wechat.util.ResponseUtil;
+import cn.simon.wechat.util.MD5Util;
 
 @RestController
 public class UserInfoController {
@@ -49,6 +47,31 @@ public class UserInfoController {
 
 	@RequestMapping(value = "/userInfo/", method = RequestMethod.POST)
 	public UserInfo addUserInfo(UserInfo userInfo) {
+		return this.userInfoService.addUserInfo(userInfo);
+	}
+	
+	/**
+	 * 用户登录
+	 * 
+	 * @param userName
+	 * @param userPass
+	 * @return
+	 */
+	@RequestMapping(value = "/userInfo/{userName}/login", method = RequestMethod.GET)
+	public String userLogin(@PathVariable("userName") String userName, String userPass){
+		UserInfo userInfo = this.userInfoService.findUserInfo(userName);
+		if(userInfo != null){
+			if(userInfo.getUserPass().equals(MD5Util.getMD5Message(userPass)))
+				return "success";
+		}
+			
+		return "failure";
+	}
+	
+	@RequestMapping(value = "/userInfo/register", method = RequestMethod.POST)
+	public UserInfo userRegister(UserInfo userInfo) {
+		userInfo.setUserPass(MD5Util.getMD5Message(userInfo.getUserPass()));
+		userInfo.setWechatOpenId("tttttt");
 		return this.userInfoService.addUserInfo(userInfo);
 	}
 }
