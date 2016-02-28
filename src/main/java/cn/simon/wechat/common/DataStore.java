@@ -17,6 +17,8 @@ public class DataStore {
 	public final static String Country_China = "CHN";
 	
 	public final static String ANDSON_URL = "http://www.iotyfw.com/andsonap/webServices/app/";
+	
+	public final static String ANDSON_SUCCESS_STATUS = "0";
 
 	// String 属性为用户ID，UserInfo属性为成功登录后ANDSON包中的UserInfo对象
 	public static Map<String, UserInfo> userInfoMap;
