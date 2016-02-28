@@ -16,5 +16,6 @@ public class DataStore {
 
 	public final static String Country_China = "CHN";
 
+	// String 属性为用户ID，UserInfo属性为成功登录后ANDSON包中的UserInfo对象
 	public static Map<String, UserInfo> userInfoMap;
 }
