@@ -1,5 +1,6 @@
 package cn.simon.wechat.common;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.andson.model.UserInfo;
@@ -17,10 +18,12 @@ public class DataStore {
 	public final static String Country_China = "CHN";
 	
 	public final static String ANDSON_URL = "http://www.iotyfw.com/andsonap/webServices/app/";
+	
+	public final static String ANDSON_SUCCESS_STATUS = "0";
 
 	// String 属性为用户ID，UserInfo属性为成功登录后ANDSON包中的UserInfo对象
-	public static Map<String, UserInfo> userInfoMap;
+	public static Map<String, UserInfo> userInfoMap = new HashMap<String, UserInfo>();
 
 	// String 属性为用户ID，token属性为成功登录ANDSON的TOKEN
-	public static Map<String, String> tokenMap;
+	public static Map<String, String> tokenMap = new HashMap<String, String>();
 }

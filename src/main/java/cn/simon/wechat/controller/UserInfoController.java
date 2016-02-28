@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.simon.wechat.common.DataStore;
 import cn.simon.wechat.model.Oauth;
 import cn.simon.wechat.model.UserInfo;
 import cn.simon.wechat.service.UserInfoService;
@@ -67,12 +68,12 @@ public class UserInfoController {
 				userInfo.setUserPass(userPass);
 				Map<String, Object> result = this.userInfoService.andSonLogin(userInfo);
 				System.out.println(result+"==========================");
-				if()
-				
-				return "success";
+				// 调用接口成功
+				if(result.get("status").equals(DataStore.ANDSON_SUCCESS_STATUS)){
+					return "success";
+				}
 			}
 		}
-			
 		return "failure";
 	}
 	
