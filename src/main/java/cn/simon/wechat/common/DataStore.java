@@ -11,4 +11,6 @@ public class DataStore {
 	public final static String AppSecret = "a199958b060d6ff04a2f9dc54cad9b10";
 
 	public final static String Country_China = "CHN";
+	
+	public final static String ANDSON_URL = "http://www.iotyfw.com/andsonap/webServices/app/";
 }
