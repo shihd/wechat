@@ -1,11 +1,21 @@
 package cn.simon.wechat.service.impl;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.andson.http.util.HttpUtil;
+import com.andson.http.util.HttpUtil.HttpRequestCallBack;
+import com.andson.http.util.JsonUtil;
+import com.andson.http.util.UUIDUtil;
+import com.squareup.okhttp.Request;
 
 import cn.simon.wechat.common.DataStore;
 import cn.simon.wechat.model.Oauth;
@@ -16,6 +26,7 @@ import cn.simon.wechat.service.AccessTokenService;
 import cn.simon.wechat.service.UserInfoService;
 import cn.simon.wechat.util.CommonUtil;
 import cn.simon.wechat.util.StringUtil;
+import net.sf.json.JSONObject;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -150,5 +161,40 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 		return null;
 	}
+	
+	@Override
+	public Map<String, Object> andSonLogin(UserInfo userInfo){
+		Map<String, Object> requestParams = new HashMap<String, Object>();
+		requestParams.put("userName", userInfo.getUserId());
+		requestParams.put("password", userInfo.getUserPass());
+		requestParams.put("mobileId", UUIDUtil.getUUID());
+		requestParams.put("isInputPassword", 1);
+		requestParams.put("mobileLocale", Locale.getDefault().toString());
+		String requestUrl = DataStore.ANDSON_URL+"user/login"; // Andson登录请求接口地址
+		com.andson.model.UserInfo userInfoAndson = new com.andson.model.UserInfo();
+		HttpRequestCallBack httpRequestCallBack = new HttpRequestCallBack() {
 
+			private Map<String, Object> resultMap;
+
+			@Override
+			protected void onSuccess(String resJsonString) throws Exception {
+				System.out.println("返回结果:" + resJsonString);
+				JSONObject jsonObj = JSONObject.fromObject(resJsonString);
+				resultMap = JsonUtil.JsonToMap(jsonObj);
+			}
+
+			@Override
+			protected void onFailure(String resJsonString, Request request, IOException ex) throws Exception {
+				System.out.println(resJsonString);
+				System.out.println(ex);
+			}
+
+			public Map<String, Object> getResultMap() {
+				return this.resultMap;
+			}
+		};
+		// 发送http请求
+		HttpUtil.sendCommonHttpRequest(userInfoAndson, requestUrl, requestParams, httpRequestCallBack);
+		return httpRequestCallBack.getResultMap();
+	}
 }

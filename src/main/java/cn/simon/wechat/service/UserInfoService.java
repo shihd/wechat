@@ -1,6 +1,7 @@
 package cn.simon.wechat.service;
 
 import java.util.Collection;
+import java.util.Map;
 
 import cn.simon.wechat.model.Oauth;
 import cn.simon.wechat.model.UserInfo;
@@ -20,5 +21,7 @@ public interface UserInfoService {
 	public Collection<UserInfo> findUserInfo(UserInfo userInfo);
 	
 	public UserInfo addUserInfo(UserInfo userInfo);
+	
+	public  Map<String, Object> andSonLogin(UserInfo userInfo);
 
 }

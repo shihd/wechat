@@ -1,6 +1,7 @@
 package cn.simon.wechat.controller;
 
 import java.util.Collection;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -61,8 +62,15 @@ public class UserInfoController {
 	public String userLogin(@PathVariable("userName") String userName, String userPass){
 		UserInfo userInfo = this.userInfoService.findUserInfo(userName);
 		if(userInfo != null){
-			if(userInfo.getUserPass().equals(MD5Util.getMD5Message(userPass)))
+			// 用户名密码正确调用Andson接口
+			if(userInfo.getUserPass().equals(MD5Util.getMD5Message(userPass))){
+				userInfo.setUserPass(userPass);
+				Map<String, Object> result = this.userInfoService.andSonLogin(userInfo);
+				System.out.println(result+"==========================");
+				if()
+				
 				return "success";
+			}
 		}
 			
 		return "failure";

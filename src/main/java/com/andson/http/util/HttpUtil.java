@@ -50,6 +50,16 @@ public class HttpUtil {
 
 		protected abstract void onSuccess(String resJsonString) throws Exception;
 	}
+	
+	// 发送http请求
+	public static void sendCommonHttpRequest(UserInfo userInfo, String requestUrl, Map<String, Object> requestParams,
+			HttpRequestCallBack httpRequestCallBack) {
+		{
+			String paramsBodyStr = buildPostBodyParams(userInfo, requestParams);
+			byte[] paramsBodyByte = AESUtil.encrypt(paramsBodyStr.getBytes());
+			post(requestUrl, paramsBodyByte, httpRequestCallBack, DEFAULT_TIMEOUT_SECONDS);
+		}
+	}
 
 	// 发送http请求
 	public static void sendCommonHttpRequest(UserInfo userInfo, String requestUrl, Map<String, Object> requestParams,
