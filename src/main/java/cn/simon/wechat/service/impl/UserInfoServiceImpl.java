@@ -195,6 +195,23 @@ public class UserInfoServiceImpl implements UserInfoService {
 		};
 		// 发送http请求
 		HttpUtil.sendCommonHttpRequest(userInfoAndson, requestUrl, requestParams, httpRequestCallBack);
-		return httpRequestCallBack.getResultMap();
+		Map<String, Object> result = httpRequestCallBack.getResultMap();
+		
+		// 调用接口成功需要做的事情
+		if(result.get("status").equals(DataStore.ANDSON_SUCCESS_STATUS)){
+			String userId = String.valueOf(result.get("userId"));
+			String tokenId = String.valueOf(result.get("tokenId"));
+			int isChildUser = new Integer((String)result.get("isChildUser"));
+			userInfoAndson.setUserId(userId);
+			userInfoAndson.setUserName(userInfo.getUserId());
+			userInfoAndson.setPassword(userInfo.getUserPass());
+			userInfoAndson.setMobileId(UUIDUtil.getUUID());
+			userInfoAndson.setTokenId(tokenId);
+			userInfoAndson.setMobileLocale(Locale.getDefault().toString());
+			userInfoAndson.setIsChildUser(isChildUser);
+			DataStore.userInfoMap.put(userId, userInfoAndson);
+			DataStore.tokenMap.put(userId, tokenId);
+		}
+		return result;
 	}
 }
