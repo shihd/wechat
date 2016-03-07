@@ -22,6 +22,10 @@ public interface UserInfoService {
 	
 	public UserInfo addUserInfo(UserInfo userInfo);
 	
-	public  Map<String, Object> andSonLogin(UserInfo userInfo);
-
+	public void delUserInfo(UserInfo userInfo);
+	
+	public Map<String, Object> andsonLogin(UserInfo userInfo);
+	
+	public Map<String, Object> andsonRegister(UserInfo userInfo);
+	
 }

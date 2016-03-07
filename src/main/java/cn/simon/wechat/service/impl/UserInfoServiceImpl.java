@@ -154,22 +154,29 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	public UserInfo addUserInfo(UserInfo userInfo) {
-		// TODO Auto-generated method stub
-		if (!StringUtil.isEmpty(userInfo.getWechatOpenId())) {
-			return this.addUserInfoByWechat(userInfo.getWechatOpenId(), accessTokenService.getAccessToken());
-		}
-
-		return null;
+		this.userInfoRepository.save(userInfo);
+		return userInfo;
 	}
 	
 	@Override
-	public Map<String, Object> andSonLogin(UserInfo userInfo){
+	public void delUserInfo(UserInfo userInfo){
+		this.userInfoRepository.delete(userInfo);
+	}
+	
+	/**
+	 * andson登录接口
+	 * 
+	 * @param userInfo
+	 * @return Map
+	 */
+	@Override
+	public Map<String, Object> andsonLogin(UserInfo userInfo){
 		Map<String, Object> requestParams = new HashMap<String, Object>();
-		requestParams.put("userName", userInfo.getUserId());
-		requestParams.put("password", userInfo.getUserPass());
-		requestParams.put("mobileId", UUIDUtil.getUUID());
-		requestParams.put("isInputPassword", 1);
-		requestParams.put("mobileLocale", Locale.getDefault().toString());
+		requestParams.put("userName", userInfo.getUserId()); // 用户名
+		requestParams.put("password", userInfo.getUserPass()); // 密码
+		requestParams.put("mobileId", UUIDUtil.getUUID()); // 手机唯一标识
+		requestParams.put("isInputPassword", 1); // 是否手输 0-否；1-是
+		requestParams.put("mobileLocale", Locale.getDefault().toString()); // 客户端语言环境
 		String requestUrl = DataStore.ANDSON_URL+"user/login"; // Andson登录请求接口地址
 		com.andson.model.UserInfo userInfoAndson = new com.andson.model.UserInfo();
 		HttpRequestCallBack httpRequestCallBack = new HttpRequestCallBack() {
@@ -213,5 +220,52 @@ public class UserInfoServiceImpl implements UserInfoService {
 			DataStore.tokenMap.put(userId, tokenId);
 		}
 		return result;
+	}
+	
+	public UserInfo userRegister(UserInfo userInfo){
+		return null;
+	}
+	
+	/**
+	 * andson注册接口
+	 * 
+	 * @param userInfo
+	 * @return Map
+	 */
+	public Map<String, Object> andsonRegister(UserInfo userInfo){
+		Map<String, Object> requestParams = new HashMap<String, Object>();
+		requestParams.put("mobileId", UUIDUtil.getUUID()); // 手机唯一标识
+		requestParams.put("mobileLocale", Locale.getDefault().toString()); // 客户端语言环境
+		requestParams.put("userName", userInfo.getUserId()); // 用户名/手机号/邮箱
+		requestParams.put("bindMedium", userInfo.getEmail());  // 绑定号码（手机号或邮箱）
+		//requestParams.put("gateWayUDID", value); // 网关唯一标识符
+		requestParams.put("password", userInfo.getUserPass()); // 用户密码
+		// requestParams.put("verificationCode", value); // 图片上的验证码
+		String requestUrl = DataStore.ANDSON_URL+"user/register"; // Andson注册请求接口地址
+		com.andson.model.UserInfo userInfoAndson = new com.andson.model.UserInfo();
+		
+		HttpRequestCallBack httpRequestCallBack = new HttpRequestCallBack() {
+			private Map<String, Object> resultMap;
+
+			@Override
+			protected void onSuccess(String resJsonString) throws Exception {
+				System.out.println("返回结果:" + resJsonString);
+				JSONObject jsonObj = JSONObject.fromObject(resJsonString);
+				resultMap = JsonUtil.JsonToMap(jsonObj);
+			}
+
+			@Override
+			protected void onFailure(String resJsonString, Request request, IOException ex) throws Exception {
+				System.out.println(resJsonString);
+				System.out.println(ex);
+			}
+
+			public Map<String, Object> getResultMap() {
+				return this.resultMap;
+			}
+		};
+		// 发送http请求
+		HttpUtil.sendCommonHttpRequest(userInfoAndson, requestUrl, requestParams, httpRequestCallBack);
+		return httpRequestCallBack.getResultMap();
 	}
 }
