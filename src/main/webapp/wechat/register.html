@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<script type="text/javascript" src="../webjars/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/js/web/wechat/controller.js"></script>
+	<script type="text/javascript" src="../resources/js/util/simon.js"></script>
+	<link rel="stylesheet" href="../webjars/bootstrap/3.3.5/css/bootstrap.css">
+	<link rel="stylesheet" href="../resources/css/wechat-style.css">
+</head>
+<body style="background-color: #FFFFFF;">
+	<div class="container">
+		<div class="row" style="padding-top: 20%">
+			<div style="text-align: center; font-size: 30px;">用户注册</div>
+		</div>
+		<div class="row" style="padding-top: 10%">
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-user"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					用户名</span> <input id="username" type="text" class="form-control" placeholder="请输入用户名"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-lock"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					密 码</span> <input id="userpass" type="password" class="form-control" placeholder="请输入密码"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-lock"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					密 码</span> <input id="userpass2" type="password" class="form-control" placeholder="请确认密码"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+			<div class="input-group" style="padding: 10px 20px">
+				<span class="input-group-addon glyphicon glyphicon-envelope"
+					id="basic-addon1" style="background-color: #428bca; color: white">
+					邮 箱</span> <input id="email" type="text" class="form-control" placeholder="请输入邮箱"
+					aria-describedby="basic-addon1" style="height: 50px;">
+			</div>
+		</div>
+		<div class="row" style="margin: 10px;text-align: center">
+			<div class="col-xs-6">
+				<button type="button" class="btn btn-primary" style="font-size: 20px;width: 100%" onclick="register();" style="width: 40px">注 册</button>
+			</div>
+			<div class="col-xs-6">
+				<button type="button" class="btn btn-danger" style="font-size: 20px;width: 100%" onclick="javascript:history.back(-1);">返 回</button>
+			</div>
+		</div>
+	</div>
+	<div id="message" class="modal" aria-hidden="true" tabindex="-1"
+		role="dialog" aria-labelledby="mySmallModalLabel"
+		style="margin-top: 50%;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p id="msgContent" style="font-size: 18px; text-align: center"></p>
+					<button type="button" class="btn btn-default btn-block"
+						data-dismiss="modal" style="margin-top: 10px">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</body>
+</html>
