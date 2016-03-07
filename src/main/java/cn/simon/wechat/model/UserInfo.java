@@ -48,6 +48,9 @@ public class UserInfo {
 
 	@Column(name = "union_id")
 	private String unionId;
+	
+	@Column(name = "email")
+	private String email;
 
 	public String getUserName() {
 		return userName;
@@ -153,4 +156,11 @@ public class UserInfo {
 		this.unionId = unionId;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

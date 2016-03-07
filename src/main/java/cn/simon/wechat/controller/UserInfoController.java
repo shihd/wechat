@@ -66,11 +66,13 @@ public class UserInfoController {
 			// 用户名密码正确调用Andson接口
 			if(userInfo.getUserPass().equals(MD5Util.getMD5Message(userPass))){
 				userInfo.setUserPass(userPass);
-				Map<String, Object> result = this.userInfoService.andSonLogin(userInfo);
-				System.out.println(result+"==========================");
+				Map<String, Object> result = this.userInfoService.andsonLogin(userInfo);
+				System.out.println("调用andson接口返回："+result+"==========================");
 				// 调用接口成功
 				if(result.get("status").equals(DataStore.ANDSON_SUCCESS_STATUS)){
 					return "success";
+				}else{
+					return "interfaceFailure";
 				}
 			}
 		}
@@ -78,9 +80,32 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/userInfo/register", method = RequestMethod.POST)
-	public UserInfo userRegister(UserInfo userInfo) {
-		userInfo.setUserPass(MD5Util.getMD5Message(userInfo.getUserPass()));
-		userInfo.setWechatOpenId("tttttt");
-		return this.userInfoService.addUserInfo(userInfo);
+	public String userRegister(UserInfo userInfo) {
+		try{
+			// 判断用户名是否存在
+			UserInfo _userInfo = this.userInfoService.findUserInfo(userInfo.getUserId());
+			if(_userInfo == null){
+				String originPass = userInfo.getUserPass(); // 明文密码
+				userInfo.setUserPass(MD5Util.getMD5Message(userInfo.getUserPass()));
+				this.userInfoService.addUserInfo(userInfo);
+				userInfo.setUserPass(originPass);
+				
+				Map<String, Object> result = this.userInfoService.andsonRegister(userInfo);
+				System.out.println("调用andson接口返回："+result+"==========================");
+				// 调用接口成功
+				String status = (String)result.get("status");
+				if(status.equals(DataStore.ANDSON_SUCCESS_STATUS)){
+					return "success";
+				}else{
+					this.userInfoService.delUserInfo(userInfo);
+					return status;
+				}
+			}else
+				return "-3"; // 用户名已存在
+		}catch(Exception ex){
+			ex.printStackTrace();
+			this.userInfoService.delUserInfo(userInfo);
+			return "-999"; // 异常信息
+		}
 	}
 }
