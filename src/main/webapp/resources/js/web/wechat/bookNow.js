@@ -40,5 +40,9 @@ function submitBookInfo() {
 	
 	$("#msgContent").html("恭喜您预约成功，静候佳音！");
 	$("#message").modal();
+}
+
+// 关闭操作
+function closeBook(){
 	window.location.href = encodeURI("bookNow.html");
 }
