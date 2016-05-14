@@ -8,15 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDER_INFO")
-public class OrderInfo {
+@Table(name = "PROMOTION_ORDER")
+public class PromotionOrder {
 
 	@Id
 	@Column(name = "ORDER_ID")
 	private String orderId;
-
-	@Column(name = "CITY_ID")
-	private String cityId;
 
 	@Column(name = "NAME")
 	private String name;
@@ -36,14 +33,6 @@ public class OrderInfo {
 
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
-	}
-
-	public String getCityId() {
-		return cityId;
-	}
-
-	public void setCityId(String cityId) {
-		this.cityId = cityId;
 	}
 
 	public String getName() {

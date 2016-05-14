@@ -1,26 +1,25 @@
 package cn.simon.wechat.service.impl;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.simon.wechat.model.OrderInfo;
-import cn.simon.wechat.repository.OrderInfoRepository;
-import cn.simon.wechat.service.OrderInfoService;
+import cn.simon.wechat.model.PromotionOrder;
+import cn.simon.wechat.repository.PromotionOrderRepository;
+import cn.simon.wechat.service.PromotionOrderService;
 
 @Service
-public class OrderInfoServiceImpl implements OrderInfoService {
+public class PromotionOrderServiceImpl implements PromotionOrderService {
 
 	@Autowired
-	private OrderInfoRepository orderInfoRepository;
+	private PromotionOrderRepository promotionOrderRepository;
 
-	public void addOrderInfo(OrderInfo orderInfo) {
-		orderInfo.setOrderId(this.getShortUuid());
-		orderInfo.setOrderTime(new Timestamp(System.currentTimeMillis()));
-		this.orderInfoRepository.save(orderInfo);
+	public void addPromotionOrder(PromotionOrder promotionOrder) {
+		promotionOrder.setOrderId(this.getShortUuid());
+		promotionOrder.setOrderTime(new Timestamp(System.currentTimeMillis()));
+		this.promotionOrderRepository.save(promotionOrder);
 	}
 
 	public static String[] chars = new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
