@@ -27,6 +27,9 @@ public class PromotionOrder {
 	@Column(name = "ORDER_TIME")
 	private Timestamp orderTime;
 
+	@Column(name = "CITY_ID")
+	private String cityId;
+
 	public String getOrderId() {
 		return orderId;
 	}
@@ -65,6 +68,14 @@ public class PromotionOrder {
 
 	public void setOrderTime(Timestamp orderTime) {
 		this.orderTime = orderTime;
+	}
+
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
 	}
 
 }
