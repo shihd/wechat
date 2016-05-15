@@ -1,8 +1,13 @@
-//var path = "http://localhost:8080/wechat";
-var path = "http://shengfuluo.com/wechat";
+var path = "http://localhost:8080/wechat";
+//var path = "http://shengfuluo.com/wechat";
 
 // 提交预约
 function submit() {
+	if (isEmpty($("#cityId").val())) {
+		$("#msgContent").html("请选择所在城市！");
+		$("#message").modal();
+		return;
+	}
 	if (isEmpty($("#name").val())) {
 		$("#msgContent").html("请输入您的真实姓名！");
 		$("#message").modal();
@@ -29,15 +34,21 @@ function submit() {
 		data : {
 			name : $("#name").val(),
 			phone : $("#phone").val(),
-			address : $("#address").val()
+			address : $("#address").val(),
+			cityId : $("#cityId").val()
 		}
 	});
 	
-	$("#msgContent").html("非常感谢您的参与！");
-	$("#message").modal();
+	$("#msgContent2").html("非常感谢您的参与！");
+	$("#message2").modal();
 }
 
 // 关闭操作
 function closeMe(){
 	window.location.href = encodeURI("actFocusWeixin.html");
+}
+
+// 我要报名
+function signUpBtn(){
+	window.location.href = encodeURI("actFocusWeixin_2.html");
 }
