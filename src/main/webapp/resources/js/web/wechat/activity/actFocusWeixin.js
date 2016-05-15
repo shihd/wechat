@@ -1,5 +1,5 @@
-var path = "http://localhost:8080/wechat";
-//var path = "http://shengfuluo.com/wechat";
+//var path = "http://localhost:8080/wechat";
+var path = "http://shengfuluo.com/wechat";
 
 // 提交预约
 function submit() {
